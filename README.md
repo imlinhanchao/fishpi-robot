@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">Fishpi Robot</h1>
-<p align="center">模块化摸鱼派机器人机器人框架</p>
+<p align="center">模块化摸鱼派机器人框架</p>
 
 ## ✨功能
 - 👂 监听聊天室消息；
