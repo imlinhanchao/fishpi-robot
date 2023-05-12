@@ -75,7 +75,7 @@ pm2 start -n fishpi-bot npm -- start
 
 ### `msg` 模块说明
 
-`msg` 模块对聊天室的的普通聊天消息进行自动化处理，内含一个 `roles` 文件夹，除了 `index.ts` 为自动载入规则入口，其余每一个文件代表一条处理规则。
+[`msg` 模块](./msg/bot)对聊天室的的普通聊天消息进行自动化处理，内含一个 `roles` 文件夹，除了 `index.ts` 为自动载入规则入口，其余每一个文件代表一条处理规则。
 
 每条规则定义如下：
 ```typescript
@@ -97,7 +97,7 @@ export interface Role {
 }
 ```
 
-比如 `record.ts` ，`match` 为 `/^赌狗记录/` 也就是只要在聊天内容匹配到`赌狗记录`起始的内容，就会触发 `exec` 函数，从 `storage` 中读取猜拳胜负记录，并调用 `fishpi` 的聊天室发送接口发送出去：
+比如 [`record.ts`](./bot/msg/roles/record.ts) ，`match` 为 `/^赌狗记录/` 也就是只要在聊天内容匹配到`赌狗记录`起始的内容，就会触发 `exec` 函数，从 `storage` 中读取猜拳胜负记录，并调用 `fishpi` 的聊天室发送接口发送出去：
 
 ```typescript
 fishpi.chatroom.send(`【${userName}】 ${record.lost}胜:${record.zero}平:${record.win}负`);
@@ -129,7 +129,7 @@ export interface Role {
 }
 ```
 
-比如 `heartbeat.ts`，会处理所有[心跳红包](./bot/redPacket/roles/heartbeat.ts)。监测到心跳红包，就会将红包 id 加入列表：
+比如 [`heartbeat.ts`](./bot/redPacket/roles/heartbeat.ts)，会处理所有心跳红包。监测到心跳红包，就会将红包 id 加入列表：
 ```javascript
 oIds.push(oId);
 ```
