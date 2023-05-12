@@ -75,7 +75,7 @@ pm2 start -n fishpi-bot npm -- start
 
 ### `msg` 模块说明
 
-[`msg` 模块](./msg/bot)对聊天室的的普通聊天消息进行自动化处理，内含一个 `roles` 文件夹，除了 `index.ts` 为自动载入规则入口，其余每一个文件代表一条处理规则。
+[`msg` 模块](./bot/msg)对聊天室的的普通聊天消息进行自动化处理，内含一个 `roles` 文件夹，除了 `index.ts` 为自动载入规则入口，其余每一个文件代表一条处理规则。
 
 每条规则定义如下：
 ```typescript
@@ -105,7 +105,7 @@ fishpi.chatroom.send(`【${userName}】 ${record.lost}胜:${record.zero}平:${re
 
 ### `redPacket` 模块说明
 
-`redPacket` 模块与 `msg` 模块一样，都具有一个 `roles` 文件夹，除了 `index.ts` 为自动载入规则入口，其余每一个文件代表一种类型的红包处理规则。
+[`redPacket` 模块](./bot/redPacket/)与 `msg` 模块一样，都具有一个 `roles` 文件夹，除了 `index.ts` 为自动载入规则入口，其余每一个文件代表一种类型的红包处理规则。
 
 每条规则定义如下：
 ```typescript
