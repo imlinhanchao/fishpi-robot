@@ -5,8 +5,19 @@ const rolePath = path.relative(process.cwd(), __dirname);
 const files = glob.sync(path.join(rolePath, '*.ts').replace(/\\/g, '/'));
 
 export interface Role {
+  /**
+   * 正则匹配规则
+   */
   match: RegExp[],
+  /**
+   * 规则执行
+   * @param msg 红包消息
+   * @param fishpi FishPi实例
+   */
   exec: (msg: ChatMsg, fishpi: FishPi) => any,
+  /**
+   * 是否启用
+   */
   enable?: boolean,
 }
 

@@ -5,8 +5,12 @@ export default {
   exec({ content: redpack, userName, oId }: ChatMsg, fishpi: Fishpi) {
     redpack = redpack as RedPacket;
     if (redpack.money <= 0) return;
+    // 把心跳包的 oId 存起来
     oIds.push(oId);
+
+    // 3秒后打开心跳包
     setTimeout(() => {
+      // 如果心跳包的 oId 还在心跳包列表中，就打开它
       if (oIds.includes(oId)) fishpi.chatroom.redpacket.open(oId);
     }, 3000)
     return;

@@ -25,7 +25,7 @@ async function main() {
 
   config['domain'] = await inputData('Set Fishpi domain', config.domain || 'fishpi.cn');
 
-  if ((await inputData('Do you want to use token to login? [Y/n] ', 'Y')).toLowerCase() === 'n') {
+  if ((await inputData('Do you want to use token to login? [Y/n]', '')).toLowerCase() === 'n') {
     config['username'] = await inputData('username', config.username || '');
     config['passwd'] = await inputData('password', config.passwd || '');
   } else {

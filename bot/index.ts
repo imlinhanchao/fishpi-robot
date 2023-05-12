@@ -5,6 +5,11 @@ const botPath = path.relative(process.cwd(), __dirname);
 const files = glob.sync(path.join(botPath, '*', 'index.ts').replace(/\\/g, '/'));
 
 export interface Robot {
+  /**
+   * 消息处理函数
+   * @param msg 聊天室消息
+   * @param fishpi FishPi实例
+   */
   exec?: (msg: Message, fishpi: Fishpi) => any,
 }
 
