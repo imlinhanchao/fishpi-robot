@@ -1,8 +1,12 @@
 import chat from './chat'
-import { token } from '../config.json';
+import config from '../config.json';
 import bots from '@bot/index';
 
 (async function main() {
-  await chat.login({ token });
-  await chat.listen(bots);
+  try {
+    await chat.login(config);
+    await chat.listen(bots);
+  } catch (error) {
+    console.error(error);
+  }
 })();
