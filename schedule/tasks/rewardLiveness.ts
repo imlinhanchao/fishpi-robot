@@ -4,7 +4,7 @@ export default {
   /**
    * 任务执行时间
    */
-  time: '10:40:00',
+  time: '08:00:00',
   /**
    * 任务执行
    * @param fireDate 任务执行时间
