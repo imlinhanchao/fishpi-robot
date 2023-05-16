@@ -31,6 +31,7 @@ async function main() {
   } else {
     config['token'] = await inputData('token', config.token || '');
   }
+  config['timeout'] = await inputData('How long reconnect chatroom when lost connect?', config.timeout || 5);
 
   fs.writeFile(path.join(__dirname, '../config.json'),
       JSON.stringify(config, null, 4),

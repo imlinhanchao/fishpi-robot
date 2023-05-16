@@ -1,6 +1,6 @@
 import Fishpi, { ChatMsg, RedPacketType } from "fishpi";
 
-export default {
+export default [{
   match: [/@chatgpt/, /您的鱼翅已耗尽咯/],
   exec: async ({ userName }: ChatMsg, fishpi: Fishpi) => {
     fishpi.chatroom.redpacket.send({
@@ -15,4 +15,4 @@ export default {
     }, 61000)
   },
   enable: true,
-}
+}]

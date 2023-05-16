@@ -1,20 +1,21 @@
-import FishPi, { ChatMsg } from 'fishpi';
+import Fishpi from 'fishpi';
 import * as glob from 'glob';
 import * as path from "path";
 const rolePath = path.relative(process.cwd(), __dirname);
 const files = glob.sync(path.join(rolePath, '*.ts').replace(/\\/g, '/'));
 
 export interface Role {
+  name: string;
   /**
-   * 正则匹配规则
+   * 任务执行时间
    */
-  match: RegExp[],
+  time: string,
   /**
-   * 规则执行
-   * @param msg 红包消息
+   * 任务执行
+   * @param fireDate 任务执行时间
    * @param fishpi FishPi实例
    */
-  exec: (msg: ChatMsg, fishpi: FishPi) => any,
+  exec: (fireDate: Date, fishpi: Fishpi) => any,
   /**
    * 是否启用
    */
@@ -23,10 +24,10 @@ export interface Role {
 
 const roles :Role[] = [];
 files.forEach(async (file) => {
-  file = './' + path.basename(file, '.ts');
-  if (file === './index') return;
+  file = './' + path.basename(file);
+  if (file === './index.ts') return;
   const role = (await import(file)).default;
-  roles.push(...role);
+  roles.push(role);
 });
 
 export default roles;

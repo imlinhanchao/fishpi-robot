@@ -2,6 +2,7 @@ import Fishpi, { ChatMsg } from 'fishpi';
 import { domain } from '../config.json';
 import fetch from 'node-fetch';
 import { Robots } from '@bot/index';
+import * as Schedule from '@schedule/index';
 
 const fishpi = new Fishpi();
 fishpi.setDomain(domain);
@@ -32,12 +33,7 @@ export default {
       exec(msg, fishpi);
     });
 
-    // 每天 8 点领取昨日活跃奖励
-    setInterval(() => {
-      if (new Date().getHours() == 8) {
-        fishpi.account.rewardLiveness().then(data => console.log(`领取昨日活跃奖励：${data} 积分`));
-      }
-    }, 3600000)
+    Schedule.load(fishpi);
   }
 }
 
