@@ -15,8 +15,10 @@ export default [{
   match: [/Ash/, /超过6小时未活跃/],
   exec: async ({ userName }: ChatMsg, fishpi: Fishpi) => {
     if (userName !== '摸鱼派官方巡逻机器人') return;
-    fishpi.chatroom.reconnect({ timeout });
-    console.log(`已重连`, new Date().toLocaleString())
+    setTimeout(async () => {
+      console.dir(await fishpi.chatroom.reconnect({ timeout }));
+      console.log(`已重连`, new Date().toLocaleString())
+    }, timeout * 1000);
   },
   enable: true,
 }]
