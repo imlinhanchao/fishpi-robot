@@ -10,8 +10,8 @@ globalThis.fetch = fetch as any;
 
 export default {
   async login(config: any) {
-    if (config.token) fishpi.setToken(config.token);
-    else if (config.username && config.passwd) fishpi.login(config);
+    if (config.token) await fishpi.setToken(config.token);
+    else if (config.username && config.passwd) await fishpi.login(config);
     else throw new Error('请提供 token 或者用户名密码');
 
     const rsp = await fishpi.account.info();
