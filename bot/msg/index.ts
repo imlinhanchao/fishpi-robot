@@ -9,3 +9,5 @@ export async function exec ({ data }: Message, fishpi: Fishpi) {
     if (match.every(m => m.test(msg.md))) exec(msg as ChatMsg, fishpi);
   })
 }
+
+export { MsgRole, load } from './roles';

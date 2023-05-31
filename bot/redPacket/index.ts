@@ -12,3 +12,5 @@ export async function exec({ data: msg }: Message, fishpi: Fishpi) {
 
   exec(msg, fishpi);
 }
+
+export { RedPackRole, load } from './roles';
