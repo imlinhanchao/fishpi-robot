@@ -1,4 +1,4 @@
-import Fishpi, { Message } from 'fishpi';
+import Fishpi, { ChatData, Message } from 'fishpi';
 import * as glob from 'glob';
 import * as path from "path";
 const botPath = path.relative(process.cwd(), __dirname);
@@ -10,7 +10,7 @@ export interface Robot {
    * @param msg 聊天室消息
    * @param fishpi FishPi实例
    */
-  exec?: (msg: Message, fishpi: Fishpi) => any,
+  exec?: (msg: ChatData | Message, fishpi: Fishpi) => any,
 }
 
 export type Robots = { [key: string]: Robot };

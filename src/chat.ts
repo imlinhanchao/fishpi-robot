@@ -1,4 +1,4 @@
-import Fishpi, { ChatMsg } from 'fishpi';
+import Fishpi, { NoticeMsg } from 'fishpi';
 import { domain } from '../config.json';
 import fetch from 'node-fetch';
 import { Robots } from '@bot/index';
@@ -31,6 +31,14 @@ export default {
       if (!exec) return;
 
       exec(msg, fishpi);
+    });
+
+    fishpi.chat.addListener(async ({ msg }) => {
+      const chat = msg as NoticeMsg;
+      if (chat.command != 'newIdleChatMessage') return;
+      const { data: chats } = await fishpi.chat.get({ user: chat.senderUserName!, size: 2 });
+      const chatData = chats?.find(chat => chat.preview == chat.preview);
+      if (bots.chats?.exec && chatData) bots.chats?.exec(chatData, fishpi);
     });
 
     Schedule.load(fishpi);
