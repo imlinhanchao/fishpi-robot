@@ -15,11 +15,16 @@ export interface MsgRole {
    * @param msg 红包消息
    * @param fishpi FishPi实例
    */
-  exec: (msg: ChatMsg, fishpi: FishPi) => any,
+  exec: (msg: ChatMsg, fishpi: FishPi) => Promise<boolean> | void,
   /**
    * 是否启用
    */
   enable?: boolean,
+  
+  /**
+   * 权重
+   */
+  priority?: number,
 }
 
 const roles :MsgRole[] = [];
@@ -29,6 +34,7 @@ files.forEach(async (file) => {
   const role = (await import(file)).default;
   roles.push(...role);
 });
+roles.sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
 
 /**
  * 加载指定目录下的所有消息 Role
