@@ -9,7 +9,7 @@ async function main() {
       output: process.stdout
   });
 
-  function inputData(key: string, defaultVal: string): Promise<string> {
+  function inputData(key: string, defaultVal: string | number): Promise<string> {
       return new Promise((resolve, reject) => {
           try {
               rl.question(`${key} ${(defaultVal ? `[${defaultVal}]` : '')}: `, function (val) {
