@@ -37,10 +37,7 @@ npm start
 ```
 
 以守护进程方式，启动服务：
-```bash
-forever start ./bin/www --uid fishpi-bot
-```
-or
+
 ```bash
 pm2 start -n fishpi-bot npm -- start
 ```
@@ -52,6 +49,8 @@ pm2 start -n fishpi-bot npm -- start
 - script - 初始化脚本 
 - src - 机器人入口
 - config.json - 运行配置档案
+
+> nginx 配置示例：[nginx.conf](./nginx.conf)
 
 ## 🛠️ 开发说明
 
